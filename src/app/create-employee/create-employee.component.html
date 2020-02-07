@@ -1,0 +1,81 @@
+<h3>Create Complaint</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Hotline Detail</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="complaint.hotlineDetail" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Tips</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="complaint.tips" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Entity Involved</label>
+      <input type="text" class="form-control" id="entityInv" required [(ngModel)]="complaint.entityInvolved" name="entityInv">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Provide NPI</label>
+      <input type="text" class="form-control" id="providerNpi" required [(ngModel)]="complaint.providerNpi" name="providerNpi">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Allegation</label>
+      <input type="text" class="form-control" id="allegation" required [(ngModel)]="complaint.allegation" name="allegation">
+    </div>
+
+    <div class="form-group">
+      <label for="name"> Case Type</label>
+      <input type="text" class="form-control" id="caseType" required [(ngModel)]="complaint.caseType" name="caseType">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Reporter Name</label>
+      <input type="text" class="form-control" id="reporterName" required [(ngModel)]="complaint.reporterName" name="reporterName">
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+
+
+<div class="panel-body">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Task Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let complaint of complaintResponse.taskSummaryList.taskDetails">
+     <!-- <td>{{complaint.taskSummaryList}}</td>-->
+      <td>{{complaint.taskName}}</td>
+      <td>{{complaint.taskStatus}}</td>
+      <td><!--<button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>-->
+        <!--<button (click)="employeeDetailsUpdate(employee.id)" class="btn btn-info" style="margin-left: 10px">Update</button>-->
+        <button (click)="complaintDetails(complaint.taskId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        <button (click)="refreshRecord(complaintResponse.caseInstanceID)" class="btn btn-info" style="margin-left: 10px">Refresh</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <iframe id="iframe" src="" width="100%" height="100%"></iframe>
+  <!--<div id="content"></div>-->
+
+  <!--<iframe sandbox="allow-same-origin" [attr.srcDoc]="srcDocContent" width="100%" height="100%" ></iframe>-->
+  <!--<iframe #iframe width="100%" height="100%" ></iframe>-->
+</div>
+
